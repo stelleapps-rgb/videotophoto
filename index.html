@@ -6,12 +6,22 @@
   <script>
   (function(){
     var ANDROID_PACKAGE = 'com.stelle.apps.videotophoto';
-    if (!/Android/i.test(navigator.userAgent)) return;
-    var fallback = 'https://play.google.com/store/apps/details?id=' + ANDROID_PACKAGE;
-    var intent = 'market://details?id=' + ANDROID_PACKAGE;
-    var t = setTimeout(function(){ window.location.href = fallback; }, 800);
-    window.addEventListener('blur', function(){ clearTimeout(t); });
-    window.location.href = intent;
+    var APPLE_ID = '6760947989';
+    var ua = navigator.userAgent;
+
+    if (/Android/i.test(ua)) {
+      var fallback = 'https://play.google.com/store/apps/details?id=' + ANDROID_PACKAGE;
+      var intent = 'market://details?id=' + ANDROID_PACKAGE;
+      var t = setTimeout(function(){ window.location.href = fallback; }, 800);
+      window.addEventListener('blur', function(){ clearTimeout(t); });
+      window.location.href = intent;
+    } else if (/iPhone|iPad|iPod/i.test(ua)) {
+      var fallback = 'https://apps.apple.com/app/id' + APPLE_ID;
+      var appStore = 'itms-apps://apps.apple.com/app/id' + APPLE_ID;
+      var t = setTimeout(function(){ window.location.href = fallback; }, 800);
+      window.addEventListener('blur', function(){ clearTimeout(t); });
+      window.location.href = appStore;
+    }
   })();
   </script>
   <meta name="description" content="Download Stelle VideoToPhoto — Turn every video into the perfect photo. Free on iOS and Android.">
