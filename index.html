@@ -3,6 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  (function(){
+    var ANDROID_PACKAGE = 'com.stelle.apps.videotophoto';
+    if (!/Android/i.test(navigator.userAgent)) return;
+    var fallback = 'https://play.google.com/store/apps/details?id=' + ANDROID_PACKAGE;
+    var intent = 'market://details?id=' + ANDROID_PACKAGE;
+    var t = setTimeout(function(){ window.location.href = fallback; }, 800);
+    window.addEventListener('blur', function(){ clearTimeout(t); });
+    window.location.href = intent;
+  })();
+  </script>
   <meta name="description" content="Download Stelle VideoToPhoto — Turn every video into the perfect photo. Free on iOS and Android.">
   <meta name="theme-color" content="#0F1A3A">
   <title>Stelle VideoToPhoto — Download</title>
